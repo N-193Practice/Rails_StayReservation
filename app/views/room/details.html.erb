@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <% if @room.image.attached? %>
+                <%= image_tag url_for(@room.image), class: 'card-img-top', data: { turbolinks: false }, :style => "max-height:400px; object-fit: contain;" %>
+            <% else %>
+                <img src="/default_room.jpg" class="card-img-top" />
+            <% end %>
+            <div class="card-body">
+                <h5 class="card-title"><%= @room.name %></h5>
+                <p class="card-text"><%= @room.introduction %></p>
+            </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Address: <%= @room.address %></li>
+                    <li class="list-group-item">Fee: <%= @room.fee %></li>
+                    <li class="list-group-item">Created at: <%= @room.created_at.strftime("%F") %></li>
+                </ul>
+            <div class="card-body">
+                <a href="<%= search_room_path %>" class="card-link">Back to search</a>
+            </div>
+        </div>
+    </div>
+</div>
